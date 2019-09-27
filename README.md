@@ -1,7 +1,7 @@
 Projet Vierge Symfony
 ========================
 
-### Action réalisé
+### Actions réalisées
 
 - Suppression du bundle AppBundle dans le répertoire src
 - Supprimer l’appel du bundle Appbundle dans le AppKernel.php
