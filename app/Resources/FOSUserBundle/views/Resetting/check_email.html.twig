@@ -1,0 +1,30 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "/layout.html.twig" %}
+
+{% block title %}
+    Title Socle luuug
+{% endblock %}
+
+{% block h1 %}
+    H1 Socle luuug
+{% endblock %}
+
+{% block content %}
+
+    <section class="contentPage contactPage">
+        <div class="container">
+            <h3 class="title">Connexion</h3>
+            <p class="subtitle">Connectez-vous</p>
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-12">
+                    <p>
+                        {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+                    </p>
+                    <div class="pcenter">
+                        <a href="{{ path('index') }}" class="btn">Retour à l'accueil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

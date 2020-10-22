@@ -1,0 +1,33 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "/layout.html.twig" %}
+
+{% block title %}
+    Title Socle luuug
+{% endblock %}
+
+{% block h1 %}
+    H1 Socle luuug
+{% endblock %}
+
+{% block content %}
+    <section class="contentPage contactPage">
+        <div class="container">
+            <h3 class="title">ADHÉREZ À L'APODEC</h3>
+            <p class="subtitle">Rejoignez nos porteurs de défibrilateurs cardiaques</p>
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-12 warning-message">
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.firstname) }}
+                    {{ form_row(form.plainPassword) }}
+                    <div class="pcenter">
+                        <button class="btn" type="submit">Valider</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

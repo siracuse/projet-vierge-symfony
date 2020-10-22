@@ -1,0 +1,73 @@
+product:
+    resource: "@ProductBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+slide:
+    resource: "@SlideBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr
+
+contact:
+    resource: "@ContactBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr
+
+realisation:
+    resource: "@RealisationBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr
+
+home:
+    resource: "@HomeBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix: /{_locale}
+    requirements:
+        _locale: en|fr
+
+#fos_user_register:
+#    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+#    prefix: /adhesion
+
+#fos_user_security_login:
+#    path: /connexion
+#    defaults: { _controller: FOSUserBundle:Security:login, _method: POST }
+#
+monprojet_language:
+    path:  /
+    defaults: {_controller: "FrameworkBundle:Redirect:redirect", route: "index", permanent: true}
+
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr
+
+
+#admin_login:
+#    path:  /admin/login
+#    defaults: { _controller: FOSUserBundle:Security:login }
+#    prefix:   /{_locale}
+#
+#admin_check:
+#    path:  /admin/login_check
+#    defaults: { _controller: FOSUserBundle:Security:check }
+#    prefix:   /{_locale}
+#
+#admin_logout:
+#    path:  /admin/logout
+#    defaults: { _controller: FOSUserBundle:Security:logout }
+#    prefix:   /{_locale}

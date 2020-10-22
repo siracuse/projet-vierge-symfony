@@ -1,0 +1,127 @@
+<?php
+
+namespace HomeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * LettreTrimestrielle
+ *
+ * @ORM\Table(name="lettre_trimestrielle")
+ * @ORM\Entity(repositoryClass="HomeBundle\Repository\LettreTrimestrielleRepository")
+ */
+class LettreTrimestrielle
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=255)
+     */
+    private $path;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCreate", type="date")
+     */
+    private $dateCreate;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return LettreTrimestrielle
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     *
+     * @return LettreTrimestrielle
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set dateCreate
+     *
+     * @param \DateTime $dateCreate
+     *
+     * @return LettreTrimestrielle
+     */
+    public function setDateCreate($dateCreate)
+    {
+        $this->dateCreate = $dateCreate;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreate
+     *
+     * @return \DateTime
+     */
+    public function getDateCreate()
+    {
+        return $this->dateCreate;
+    }
+}

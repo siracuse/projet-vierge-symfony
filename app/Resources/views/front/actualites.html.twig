@@ -1,0 +1,31 @@
+{% extends "/layout.html.twig" %}
+
+{% block title %}Title Socle luuug{% endblock %}
+{% block metaDescription %}meta Description Socle luuug{% endblock %}
+
+{% block content %}
+    <section class="contentPage welcomePage">
+        <div class="container">
+            <h3 class="title">Nos actualités</h3>
+            <p class="subtitle">Nous vous donnons des nouvelles !</p>
+            <div class="row">
+                {% for actualite in actualites %}
+                    <article class="col-12 col-md-6 actu">
+                        <div>
+                            <h2>{{ actualite.title }}</h2>
+                            <p class="date">Le {{ actualite.datecreate|date('d/m/Y') }}</p>
+                            {% set firstImage =  actualite.images|first %}
+                            {% if firstImage != false %}
+                                <img src='{{ asset ('uploads/actualites/'~ firstImage.name ~'') }}'
+                                     alt="{{ actualite.title }}">
+                            {% endif %}
+                            <p class="paragraphe">{{ actualite.description|striptags|truncate(200)|raw }}</p>
+                            <p><a class="btn" href="{{ path('actualite-fiche', {id: actualite.id, slug:actualite.slug}) }}">Voir
+                                    plus</a></p>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

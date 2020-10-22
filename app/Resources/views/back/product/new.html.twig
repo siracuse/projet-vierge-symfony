@@ -1,0 +1,44 @@
+{% extends "/layoutAdmin.html.twig" %}
+{% block content %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1 col-12">
+                    {% include 'back/_tagAlerte.html.twig' %}
+                    <div class="card">
+                        <div class="card-header"><b>Ajout </b> d'un produit :
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                {{ form_start(form) }}
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.name) }}
+                                </div>
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.price) }}
+                                </div>
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.description) }}
+                                </div>
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.images) }}
+                                    <p>
+                                        <strong>Taille maximale par image :</strong> 1 Mo<br>
+                                        <strong>Formats supportés :</strong> jpg et png
+                                    </p>
+                                </div>
+                                <div class="col-12"><p>Les champs précédés de la mention * sont obligatoires.</p></div>
+                                <div class="col-12 btn-form-admin">
+                                    {{ form_row(form.save) }}
+                                    <a href="{{ path('admin-product-index') }}"
+                                       class="btn btn-secondary">Annuler</a>
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

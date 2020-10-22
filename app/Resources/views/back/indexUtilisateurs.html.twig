@@ -1,0 +1,71 @@
+{% extends "/layoutAdmin.html.twig" %}
+
+{% block content %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1 col-12">
+
+                    {% include 'back/_tagAlerte.html.twig' %}
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="col-md-12"><strong class="card-title">Tous les utilisateurs</strong></div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-striped" id="table_id">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prénom</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Rôle</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% if users == null %}
+                                    <tr>
+                                        <th scope="row"><i>0</i></th>
+                                        <td><i>Non défini</i></td>
+                                        <td><i>Non défini</i></td>
+                                        <td><i>Non défini</i></td>
+                                        <td><i>Non défini</i></td>
+                                        <td><i>Non défini</i></td>
+                                        <td><i>Non défini</i></td>
+                                    </tr>
+                                {% else %}
+                                    {% for user in users %}
+                                        <tr>
+                                            <th scope="row">{{ loop.index }}</th>
+                                            <td>{{ user.name }}</td>
+                                            <td>{{ user.firstname }}</td>
+                                            <td>{{ user.email }}</td>
+                                            <td class="badge-user">
+                                                {% for role in user.roles %}
+                                                    {% if role == 'ROLE_ADMIN' %}
+                                                        <span class="badge badge-danger">Administrateur</span>
+                                                    {% endif %}
+                                                    {% if role == 'ROLE_GOD' %}
+                                                    {% endif %}
+                                                    {% if role == 'ROLE_USER' %}
+                                                        <span class="badge badge-info">Utiisateur</span>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                            <td>
+                                                ++
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

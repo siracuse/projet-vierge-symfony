@@ -1,0 +1,30 @@
+{% extends "/layout.html.twig" %}
+
+{% block title %}Title Socle luuug{% endblock %}
+{% block description %}H1 Socle luuug{% endblock %}
+
+{% block content %}
+    <section class="contentPage">
+        <div class="container">
+            <p style="margin-bottom: 4em ">Tous les produits</p>
+            <div class="row">
+                {% for product in products %}
+                    <article class="col-3 actu" style="padding: 0">
+                        <img src='{{ asset ('uploads/products/'~ product.images[0].name) }}'
+                             alt="#">
+                        <div style="padding: 1em">
+                            <h2 style="margin: 1em 0">{{ product.name }}</h2>
+                            <h2 style="margin: 1em 0"><b>{{ product.price }} €</b></h2>
+                            {# <p>{{ product.description|striptags|truncate(200)|raw }}</p> #}
+                            <p style="text-align: right">
+                                <a class="btn"
+                                   href="{{ path('product-fiche', {id: product.id, slug: product.slug}) }}">Voir
+                                    plus</a>
+                            </p>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

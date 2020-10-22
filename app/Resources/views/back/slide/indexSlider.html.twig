@@ -1,0 +1,60 @@
+{% extends "/layoutAdmin.html.twig" %}
+{% block content %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1 col-12">
+                    {% include 'back/_tagAlerte.html.twig' %}
+                    <div class="card">
+                        <div class="card-header card-header-index">
+                            <div class="col-md-8"><strong class="card-title">Les slides</strong>
+                            </div>
+                            <div class="col-md-4 text-right"><a class="btn btn-success"
+                                                                href="{{ path('admin-slider-new') }}"><i
+                                            class="menu-icon fa fa-plus-circle"></i> Nouvelle Slide</a>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-striped" id="table_id">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Titre</th>
+                                    <th scope="col">Lien</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody id="sortable-js-slider">
+                                {% if sliders == null %}
+                                    <tr>
+                                        <th scope="row"><i>0</i></th>
+                                        <td><i>Non défini</i></td>
+                                        <td><i>Non défini</i></td>
+                                        <td><i>Non défini</i></td>
+                                    </tr>
+                                {% else %}
+                                    {% for slider in sliders %}
+                                        <tr id="{{ slider.id }}">
+                                            <th scope="row" id="position">&#8597; {{ slider.position }}</th>
+                                            <td>{{ slider.title }}</td>
+                                            <td>{{ slider.link|truncate(55) }}</td>
+                                            <td>
+                                                <a href="{{ path('admin-slider-edit', {id: slider.id}) }}"
+                                                   class="icon-edit"><i class="menu-icon fa fa-edit"></i></a>
+                                                <a data-href="{{ path('admin-slider-delete', {id: slider.id}) }}"
+                                                   data-toggle="modal"
+                                                   data-target="#confirm-delete" class="icon-delete"><i
+                                                            class="menu-icon fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

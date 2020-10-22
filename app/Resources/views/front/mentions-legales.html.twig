@@ -1,0 +1,60 @@
+{% extends "/layout.html.twig" %}
+
+{% block title %}Title Socle luuug{% endblock %}
+{% block metaDescription %}meta Description Socle luuug{% endblock %}
+
+{% block content %}
+    <section class="contentPage">
+        <div class="container">
+            <h3 class="title">Mentions légales</h3>
+            <div class="contentPage row">
+                <div class="col-12 col-md-6">
+                    <p class="titleArticle"><b>Identification de l'éditeur</b></p><hr>
+                    <p class="paragraphe">
+                        <b>SAS LUUUG</b><br>
+                        <b>Siège social :</b> 20 Bd Eugène Deruelle - 69300 LYON<br>
+                        <b>Téléphone :</b> 06 71 89 67 89<br>
+                        <b>Email :</b> contact@studioluuug.com
+                    </p>
+                    <p class="paragraphe">
+                        <b>N° SIREN :</b> 852 347 426<br>
+                        <b>N° SIRET :</b> 85234742600011<br>
+                        <b>RCS :</b> Lyon B 852 347 426<br>
+                        <b>Code APE (NAF) de l'entreprise :</b> 7022Z<br>
+                        <b>Capital social :</b> 1000€
+                    </p>
+                    <p class="paragraphe">
+                        <b>Directeur de la publication :</b> M. Armand MILAN
+                    </p>
+                    <br><br>
+                    <p class="titleArticle"><b>Conception, développement du site</b></p><hr>
+                    <p class="paragraphe">
+                        La conception graphique, le développement ainsi que le référencement de ce site web ont été réalisés par la SAS LUUUG.<br>
+                        Contact LUUUG : 06 71 89 67 89 - contact@studioluuug.com
+                    </p>
+                    <br><br>
+                    <p class="titleArticle"><b>Hébergement du site</b></p><hr>
+                    <p class="paragraphe">
+                        <b>1&1 IONOS SARL</b><br>
+                        <b>Siège social :</b> 7 Pl de la gare 57200 SARREGUEMINES
+                    </p>
+                </div>
+                <div class="col-12 col-md-6">
+                    <p class="titleArticle"><b>Traitement des données personnelles</b></p><hr>
+                    <p class="paragraphe">
+                        Conformément aux dispositions des articles 38 et suivants de la loi 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, tout utilisateur dispose d’un droit d’accès, de rectification, de suppression et d’opposition aux données personnelles le concernant.<br>
+                        Vous pouvez exercer ce droit par simple demande en nous contactant en justifiant de votre identité.
+                        <a href="{{path('vie-privee')}}" class="btn">Détails sur la vie privée</a>
+                    </p>
+                    <br><br>
+                    <p class="titleArticle"><b>Liens hypertextes et responsabilité</b></p><hr>
+                    <p class="paragraphe">Ce site internet peut proposer des liens vers d'autres sites. Nous indiquons systématiquement vers quel site nous vous proposons d'aller. Cependant, ces pages web dont les adresses sont régulièrement vérifiées ne font pas partie de ce site : elles n'engagent pas la responsabilité de la rédaction du site.</p>
+                    <br><br>
+                    <p class="titleArticle"><b>Propriété intellectuelle</b></p><hr>
+                    <p class="paragraphe"><b>Droit de reproduction</b><br>
+                        La reproduction ou réutilisation des contenus de ce site est autorisée sous réserve de mentionner la date et la source, plus globalement de respecter la licence ouverte. La copie des autres pages du site, des logos et contenus propres à l'auteur du site doit avoir obtenu l'autorisation du directeur de la publication.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,24 @@
+<section id="slider">
+    <div class="swiper-slide-home">
+        <div class="swiper-wrapper">
+            {% if slides != [] %}
+                {% for slide in slides %}
+                    <div class="swiper-slide" data-background="{{ asset('uploads/sliders/' ~ slide.picture) }}">
+                        <div class="overlay"></div>
+                        <div class="content-info">
+                            <h2 class="blue-bold">{{ slide.title }}</h2>
+                            <a href="{{ slide.link }}" class="btn btn-second">EN SAVOIR PLUS</a>
+                            <a href="{{ slide.link }}" class="btn">CONTACTEZ-NOUS</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="swiper-slide" data-background="{{ asset('front/img/slide.jpg') }}"></div>
+                <div class="overlay"></div>
+            {% endif %}
+        </div>
+        <div class="swiper-slide-home-prev"><i> < </i></div>
+        <div class="swiper-slide-home-next"><i> > </i></div>
+        <div class="swiper-slide-home-pagination"></div>
+    </div>
+</section>

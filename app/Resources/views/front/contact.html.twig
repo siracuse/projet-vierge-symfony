@@ -1,0 +1,40 @@
+{% extends "/layout.html.twig" %}
+
+{% block title %}Title Socle luuug{% endblock %}
+{% block metaDescription %}meta Description Socle luuug{% endblock %}
+
+{% block content %}
+    <section class="contentPage contactPage">
+        <div class="container">
+
+            <h3 class="title">Contactez NomEntreprise</h3>
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong> {{ message }} </strong>
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('fail') %}
+                <div class="alert alert-dark alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong> {{ message }} </strong>
+                </div>
+            {% endfor %}
+
+            {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-12 col-sm-6">{{ form_row(form.name) }}</div>
+                    <div class="col-12 col-sm-6">{{ form_row(form.firstname) }}</div>
+                    <div class="col-12 col-sm-6">{{ form_row(form.email) }}</div>
+                    <div class="col-12 col-sm-6">{{ form_row(form.phone) }}</div>
+                    <div class="col-12">{{ form_row(form.message) }}</div>
+                    <div class="col-12 compteurCaractere"><p id="compteur">0 Caractère / 500</p></div>
+
+                    <div class="col-12 col-sm-6 content-send">{{ form_row(form.save) }}</div>
+                </div>
+            {{ form_end(form) }}
+
+        </div>
+    </section>
+{% endblock %}

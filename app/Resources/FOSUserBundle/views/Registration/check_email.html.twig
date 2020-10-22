@@ -1,0 +1,23 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "/layout.html.twig" %}
+
+{% block title %}
+    Title Socle luuug
+{% endblock %}
+
+{% block h1 %}
+    H1 Socle luuug
+{% endblock %}
+
+{% block content %}
+    <section class="contentPage contactPage">
+        <div class="container">
+            <h3 class="title">Mon Compte</h3>
+            <p class="subtitle">Corfirmation de l'adresse email</p>
+
+            <p class="pcenter">{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+
+        </div>
+    </section>
+
+{% endblock %}

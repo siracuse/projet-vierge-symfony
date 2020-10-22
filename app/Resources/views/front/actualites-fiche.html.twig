@@ -1,0 +1,29 @@
+{% extends "/layout.html.twig" %}
+
+{% block title %}Title Socle luuug{% endblock %}
+{% block metaDescription %}meta Description Socle luuug{% endblock %}
+
+{% block content %}
+    <section class="contentPage">
+        <div class="container">
+            <div class="row">
+                <article class="col-12 actu">
+                    <div>
+                        <h2>{{ actualite.title }}</h2>
+                        <p class="date">{{ actualite.dateCreate|date('d/m/Y') }}</p>
+                        <div class="row">
+                            {% for image in actualite.images %}
+                                <div class="col-md-6">
+                                    <img src="{{ asset('uploads/actualites/'~ image.name) }}"
+                                         alt="{{ actualite.title }}">
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <p>{{ actualite.description|raw|raw }}</p>
+                    </div>
+                </article>
+            </div>
+            <a class="btn" href="{{ path('actualites') }}">Retour</a>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "/layout.html.twig" %}
+
+{% block title %}
+    Title Socle luuug
+{% endblock %}
+
+{% block h1 %}
+    H1 Socle luuug
+{% endblock %}
+
+{% block content %}
+    <section class="contentPage contactPage">
+        <div class="container">
+            <h3 class="title">Mon Profil</h3>
+
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-12">
+                    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.name, {'label' : 'Nom'}) }}
+                    {{ form_row(form.firstname, {'label' : 'Prénom'}) }}
+                    {{ form_row(form.current_password) }}
+
+                    <div class="pcenter">
+                        <button class="btn" type="submit">Modifier</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+                <div class="col-md-6 offset-md-3 col-12 pcenter"><a class="btn " href="{{ path('fos_user_change_password') }}">Modifier mon mot de passe</a></div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

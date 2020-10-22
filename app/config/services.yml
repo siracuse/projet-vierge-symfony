@@ -13,23 +13,42 @@ services:
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
         public: false
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+
+    app.form.registration:
+        class: HomeBundle\Form\RegistrationFormType
+        tags:
+            - { name: form.type }
+
+    app.form.changepassword:
+        class: HomeBundle\Form\ChangePasswordFormType
+        tags:
+            - { name: form.type }
 
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    # AppBundle\:
-    #     resource: '../../src/AppBundle/*'
-    #     # you can exclude directories or files
-    #     # but if a service is unused, it's removed anyway
-    #     exclude: '../../src/AppBundle/{Entity,Repository,Tests}'
-
-    # controllers are imported separately to make sure they're public
-    # and have a tag that allows actions to type-hint services
-    # AppBundle\Controller\:
-    #     resource: '../../src/AppBundle/Controller'
-    #     public: true
-    #     tags: ['controller.service_arguments']
+#    AppBundle\:
+#        resource: '../../src/AppBundle/*'
+#        # you can exclude directories or files
+#        # but if a service is unused, it's removed anyway
+#        exclude: '../../src/AppBundle/{Entity,Repository,Tests}'
+#
+#    # controllers are imported separately to make sure they're public
+#    # and have a tag that allows actions to type-hint services
+#    AppBundle\Controller\:
+#        resource: '../../src/AppBundle/Controller'
+#        public: true
+#        tags: ['controller.service_arguments']
 
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    #   Redirection après login
+    redirect.after.login:
+        class: HomeBundle\Listener\AfterLoginRedirection
+        arguments: ['@router']

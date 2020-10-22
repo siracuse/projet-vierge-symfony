@@ -1,0 +1,49 @@
+{% extends "/layoutAdmin.html.twig" %}
+{% block content %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1 col-12">
+                    <div class="card">
+                        <div class="card-header"><b>Modification </b> de la slide : "{{ slider.title }}"
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                {{ form_start(form) }}
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.title) }}
+                                </div>
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.link) }}
+                                </div>
+                                <div class="col-12 col-md-6 mb-4">
+                                    {{ form_label(form.picture) }}<br>
+                                    {% if slider.picture is not null %}
+                                        <img src="{{ asset('uploads/sliders/'~ slider.picture~'') }}"
+                                             class="shSizeImg mb-2" alt="img">
+                                    {% endif %}
+                                    {{ form_widget(form.picture, {'required' : false}) }}<br>
+                                    <p><strong>Taille maximale :</strong> 1 Mo<br>
+                                        <strong>Formats supportés :</strong> jpg et png</p>
+                                </div>
+                                <div class="col-12"><p>Les champs précédés de la mention * sont obligatoires.</p></div>
+                                <div class="col-12">
+                                    <div class="col-md-6 px-0 btn-form-admin">
+                                        {{ form_row(form.save) }}
+                                        <a href="{{ path('admin-slider-index') }}" class="btn btn-secondary">Annuler</a>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <a data-href="{{ path('admin-slider-delete', {id: slider.id}) }}"
+                                           data-toggle="modal" class="btn btn-danger text-white"
+                                           data-target="#confirm-delete">Supprimer</a>
+                                    </div>
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

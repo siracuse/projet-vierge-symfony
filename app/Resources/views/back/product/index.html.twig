@@ -1,0 +1,67 @@
+{% extends "/layoutAdmin.html.twig" %}
+{% block content %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1 col-12">
+                    {% include 'back/_tagAlerte.html.twig' %}
+                    <div class="card">
+                        <div class="card-header card-header-index">
+                            <div class="col-md-6"><strong class="card-title">Les produits</strong></div>
+                            <div class="col-md-6 text-right">
+                                <a class="btn btn-success" href="{{ path('admin-product-new') }}"><i
+                                            class="menu-icon fa fa-plus-circle mr-2"></i>Nouveau produit</a>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-striped" id="table_id">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prix</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% if products == null %}
+                                    <tr>
+                                        <th scope="row"><i>0</i></th>
+                                        <td><i>Non défini</i></td>
+                                        <td><i>Non défini</i></td>
+                                        <td><i>Non défini</i></td>
+                                        <td><i>Non défini</i></td>
+                                    </tr>
+                                {% else %}
+                                    {% for product in products %}
+                                        <tr>
+                                            <th scope="row">{{ loop.index }}</th>
+                                            <td>{{ product.name }}</td>
+                                            <td>{{ product.price }} €</td>
+                                            <td>
+{#                                                {{ dump(product.images[0].name) }}#}
+                                                <img class="shSizeImg" src="{{ asset('uploads/products/'~product.images[0].name) }}" alt="#">
+                                            </td>
+                                            <td>
+                                                <a href="{{ path('admin-product-edit', {id: product.id}) }}"
+                                                   class="icon-edit"><i
+                                                            class="menu-icon fa fa-edit"></i></a>
+                                                <a data-href="{{ path('admin-product-delete', {id: product.id}) }}"
+                                                   data-toggle="modal"
+                                                   data-target="#confirm-delete" class="icon-delete">
+                                                    <i class="menu-icon fa fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

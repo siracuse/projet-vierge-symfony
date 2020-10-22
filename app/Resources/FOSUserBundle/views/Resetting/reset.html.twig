@@ -1,0 +1,33 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "/layout.html.twig" %}
+
+{% block title %}
+    Title Socle luuug
+{% endblock %}
+
+{% block h1 %}
+    H1 Socle luuug
+{% endblock %}
+
+{% block content %}
+    <section class="contentPage contactPage">
+        <div class="container">
+            <h3 class="title">Connexion</h3>
+            <p class="subtitle">Connectez-vous</p>
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-12">
+                    {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+                    {{ form_widget(form) }}
+                    <div class="pcenter">
+                        <button class="btn btn-success" type="submit" value="{{ 'resetting.reset.submit'|trans }}">
+                            Modifier le mot de passe
+                        </button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "/layout.html.twig" %}
+
+{% block title %}
+    Title Socle luuug
+{% endblock %}
+
+{% block h1 %}
+    H1 Socle luuug
+{% endblock %}
+
+{% block content %}
+    <section class="contentPage contactPage">
+        <div class="container">
+            <h3 class="title">Mon Compte</h3>
+            <p class="subtitle">Validation réussie !</p>
+
+            <p class="pcenter">{{ 'registration.confirmed'|trans({'%username%': user.name ~ ' ' ~ user.firstname}) }}
+                <br><a href="{{ path('index') }}">Retour à l'accueil</a>
+            </p>
+
+            {% if targetUrl %}
+                <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+            {% endif %}
+
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+services:
+    home.createpicture:
+        class: HomeBundle\Service\CreatePicture
+        arguments: ['@service_container']
+    HomeBundle\DataFixtures\ORM\LoadFixtures:
+        tags: [doctrine.fixture.orm]

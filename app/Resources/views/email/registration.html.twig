@@ -1,0 +1,28 @@
+{% block subject %} APODEC - Confirmation d'inscription {% endblock %}
+
+{% block body_html %}
+    {% autoescape false %}
+
+        <h3 style="border-bottom: 1px black solid; color:#ea5340">
+            Confirmation d'inscription
+        </h3>
+
+        Bonjour {{ user.name }} {{ user.firstname }} ! <br><br>
+
+        Vous avez récemment créé un compte sur Apodec. <br>
+        Veuillez à présent cliquer sur le lien d'activation : <br><br>
+        <a style="color :#fff; font-weight :700; text-transform :uppercase; background : #ea5340; border:none;
+        border-radius :30px; padding :8px 16px; font-family :sans-serif; letter-spacing :1px; text-decoration: none;"
+           href="{{ confirmationUrl }}">
+            Activer mon compte
+        </a>
+        <br><br><br>
+
+
+        Cordialement,<br>
+        Apodec
+        <br><br>
+        <img src="http://apodec.devstudioluuug.com/front/img/logo-apodec.png" width="180">
+
+    {% endautoescape %}
+{% endblock %}

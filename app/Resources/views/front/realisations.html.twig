@@ -1,0 +1,25 @@
+{% extends "/layout.html.twig" %}
+
+{% block title %}Title Socle luuug{% endblock %}
+{% block description %}H1 Socle luuug{% endblock %}
+
+{% block content %}
+    <section class="contentPage">
+        <div class="container">
+            <p>Toutes nos réalisations</p>
+            <div class="row">
+                {% for realisation in realisations %}
+                    <article class="col-3 actu">
+                        <h2>{{ realisation.title }}</h2>
+                        {% set firstImage = realisation.images|first %}
+                        <img src='{{ asset ('uploads/realisations/'~ firstImage.name ~'') }}' alt="#">
+                        <p>{{ realisation.description|striptags|truncate(200)|raw }}</p>
+                        <p><a class="btn"
+                              href="{{ path('realisation-fiche', {id: realisation.id, slug: realisation.slug}) }}">Voir
+                                plus</a></p>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

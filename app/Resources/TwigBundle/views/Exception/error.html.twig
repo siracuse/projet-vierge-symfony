@@ -1,0 +1,26 @@
+{% extends "/layout.html.twig" %}
+
+{% block title %}
+	Title Socle luuug
+{% endblock %}
+
+{% block h1 %}
+	H1 Socle luuug
+{% endblock %}
+
+{% block content %}
+    <section class="contentPage">
+        <div class="container">
+        	<div class="row errorPage">
+        		<div class="col-12 col-md-6">
+{#        			<img src="{{asset('front/img/error.jpg')}}" alt=""/>#}
+        		</div>
+        		<div class="col-12 col-md-6">
+        			<p class="paragraphe"><span>Erreur</span></p>
+        			<p class="paragraphe">Un problème est survenu. Vous pouvez poursuivre votre navigation.</p>
+        			<a href="{{path('index')}}" class="btn">Retour accueil</a>
+        		</div>
+        	</div>
+        </div>
+    </section>
+{% endblock %}

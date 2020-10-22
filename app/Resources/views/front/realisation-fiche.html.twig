@@ -1,0 +1,26 @@
+{% extends "/layout.html.twig" %}
+
+{% block title %}Title Socle luuug{% endblock %}
+{% block metaDescription %}meta Description Socle luuug{% endblock %}
+
+{% block content %}
+    <section class="contentPage">
+        <div class="container">
+            <div class="row">
+                <article class="col-6 actu-view">
+                    <h2>{{ realisation.title }}</h2>
+                    <div class="row">
+                        {% for image in realisation.images %}
+                            <div class="col-md-6">
+                                <img src="{{ asset('uploads/realisations/'~ image.name) }}"
+                                     alt="#">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <p>{{ realisation.description|raw }}</p>
+                </article>
+            </div>
+            <a class="btn" href="{{ path('realisations') }}">Retour</a>
+        </div>
+    </section>
+{% endblock %}
