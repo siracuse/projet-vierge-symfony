@@ -154,3 +154,8 @@ footer{background-color: #444;padding:0.4em; color:#fff; text-align: center;}
 .btn-connexion { color: white} .btn-connexion:hover { color: #5eb5e0}
 .warning-message ul li {color:red}
 a {color:white}
+
+/*FILTER*/
+.produit .mix{display: none;}
+#filterContainer{overflow: hidden;}
+.filter{margin-left: 8px;}

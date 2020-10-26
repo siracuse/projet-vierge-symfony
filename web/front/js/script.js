@@ -166,5 +166,12 @@ $(document).ready(function() {
         });
     });
 
+    // FILTER
+    $('#filterContainer').mixItUp({
+        load: {
+            filter: 'all'
+        }
+    });
+
 // END
 });

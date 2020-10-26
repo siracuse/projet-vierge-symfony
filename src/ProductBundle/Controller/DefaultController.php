@@ -13,7 +13,11 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $products = $this->getDoctrine()->getManager()->getRepository('ProductBundle:Product')->findAll();
-        return $this->render('front/product/index.html.twig', compact('products'));
+        $categories = $this->getDoctrine()->getManager()->getRepository('ProductBundle:Category')->findAll();
+        return $this->render('front/product/index.html.twig', [
+            'products' => $products,
+            'categories' => $categories
+        ]);
     }
 
     /**

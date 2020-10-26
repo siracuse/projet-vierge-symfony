@@ -4,18 +4,26 @@
 {% block description %}H1 Socle luuug{% endblock %}
 
 {% block content %}
-    <section class="contentPage">
+    <section class="produit">
         <div class="container">
             <p style="margin-bottom: 4em ">Tous les produits</p>
-            <div class="row">
+
+            <ul style="display: flex">
+                <li class="filter" data-filter="all"><span>Tout</span></li>
+                {% for category in categories %}
+                    <li class="filter" data-filter=".{{category.name}}"><span>{{category.name|capitalize}}</span></li>
+                {% endfor %}
+            </ul>
+
+
+            <div class="row" id="filterContainer">
                 {% for product in products %}
-                    <article class="col-3 actu" style="padding: 0">
+                    <article class="col-3 actu mix {{ product.category.name }}" style="padding: 0">
                         <img src='{{ asset ('uploads/products/'~ product.images[0].name) }}'
                              alt="#">
                         <div style="padding: 1em">
                             <h2 style="margin: 1em 0">{{ product.name }}</h2>
                             <h2 style="margin: 1em 0"><b>{{ product.price }} €</b></h2>
-                            {# <p>{{ product.description|striptags|truncate(200)|raw }}</p> #}
                             <p style="text-align: right">
                                 <a class="btn"
                                    href="{{ path('product-fiche', {id: product.id, slug: product.slug}) }}">Voir
