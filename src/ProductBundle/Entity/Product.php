@@ -44,6 +44,11 @@ class Product
     private $price;
 
     /**
+     * @ORM\Column(name="date_at", type="datetime")
+     */
+    private $dateAt;
+
+    /**
      * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ImageProduct", mappedBy="product", cascade={"persist"}, orphanRemoval=true)
      */
     private $images;
@@ -117,7 +122,21 @@ class Product
         return $this->description;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDateAt()
+    {
+        return $this->dateAt;
+    }
 
+    /**
+     * @param mixed $dateAt
+     */
+    public function setDateAt($dateAt)
+    {
+        $this->dateAt = $dateAt;
+    }
 
     /**
      * Constructor
@@ -125,6 +144,7 @@ class Product
     public function __construct()
     {
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateAt = new \DateTime();
     }
 
     /**
@@ -210,4 +230,18 @@ class Product
     {
         return $this->category;
     }
+
+    public function newProd()
+    {
+//        var_dump(new \DateTime());
+//        var_dump($this->getDateAt()->add(new \DateInterval('P30D')));
+//        die();
+        if (new \DateTime() <= $this->getDateAt()->add(new \DateInterval('P30D'))){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }

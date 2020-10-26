@@ -15,7 +15,6 @@
                 {% endfor %}
             </ul>
 
-
             <div class="row" id="filterContainer">
                 {% for product in products %}
                     <article class="col-3 actu mix {{ product.category.name }}" style="padding: 0">
@@ -24,6 +23,9 @@
                         <div style="padding: 1em">
                             <h2 style="margin: 1em 0">{{ product.name }}</h2>
                             <h2 style="margin: 1em 0"><b>{{ product.price }} €</b></h2>
+                            {% if product.newProd == true %}
+                                <p>NOUVEAUTÉ</p>
+                            {% endif %}
                             <p style="text-align: right">
                                 <a class="btn"
                                    href="{{ path('product-fiche', {id: product.id, slug: product.slug}) }}">Voir
