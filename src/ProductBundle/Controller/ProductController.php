@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route ("/admin/product")
  */
-class AdminController extends Controller
+class ProductController extends Controller
 {
     /**
      * @Route ("/", name="admin-product-index")

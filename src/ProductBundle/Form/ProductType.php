@@ -3,6 +3,7 @@
 namespace ProductBundle\Form;
 
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -65,6 +66,10 @@ class ProductType extends AbstractType
                         ])
                     ])
                 ]
+            ])
+            ->add('category', EntityType::class, [
+                'class' => 'ProductBundle\Entity\Category',
+                'choice_label' => 'name'
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Valider',

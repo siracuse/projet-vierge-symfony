@@ -56,6 +56,10 @@
                     <a href="{{ path('admin-product-index') }}" class="dropdown-toggle"> <i
                                 class="menu-icon fa fa-users"></i>Produit</a>
                 </li>
+                <li>
+                    <a href="{{ path('admin-category-index') }}" class="dropdown-toggle"> <i
+                                class="menu-icon fa fa-users"></i>Categorie</a>
+                </li>
                 {% for role in app.user.roles %}
                     {% if role == 'ROLE_GOD' %}
 

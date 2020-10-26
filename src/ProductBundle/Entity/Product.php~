@@ -186,28 +186,4 @@ class Product
     {
         return $this->price;
     }
-
-    /**
-     * Set category.
-     *
-     * @param \ProductBundle\Entity\Category|null $category
-     *
-     * @return Product
-     */
-    public function setCategory(\ProductBundle\Entity\Category $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category.
-     *
-     * @return \ProductBundle\Entity\Category|null
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
 }
