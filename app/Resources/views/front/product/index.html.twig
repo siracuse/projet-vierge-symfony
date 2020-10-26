@@ -11,7 +11,8 @@
             <ul style="display: flex">
                 <li class="filter" data-filter="all"><span>Tout</span></li>
                 {% for category in categories %}
-                    <li class="filter" data-filter=".{{category.name}}"><span>{{category.name|capitalize}}</span></li>
+                    <li class="filter" data-filter=".{{ category.name }}"><span>{{ category.name|capitalize }}</span>
+                    </li>
                 {% endfor %}
             </ul>
 
@@ -22,7 +23,14 @@
                              alt="#">
                         <div style="padding: 1em">
                             <h2 style="margin: 1em 0">{{ product.name }}</h2>
-                            <h2 style="margin: 1em 0"><b>{{ product.price }} €</b></h2>
+                            {% if product.solde == 0 %}
+
+                                <h2 style="margin: 1em 0"><b>{{ product.price }} €</b></h2>
+                            {% else %}
+                                <h2 style="margin: 1em 0;text-decoration: line-through"><b>{{ product.price }} €</b>
+                                </h2>
+                                <h2 style="margin: 1em 0"><b>{{ product.newPrice }} €</b></h2>
+                            {% endif %}
                             {% if product.newProd == true %}
                                 <p>NOUVEAUTÉ</p>
                             {% endif %}

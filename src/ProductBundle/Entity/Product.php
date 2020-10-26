@@ -49,6 +49,11 @@ class Product
     private $dateAt;
 
     /**
+     * @ORM\Column(name="solde", type="integer")
+     */
+    private $solde;
+
+    /**
      * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ImageProduct", mappedBy="product", cascade={"persist"}, orphanRemoval=true)
      */
     private $images;
@@ -136,6 +141,22 @@ class Product
     public function setDateAt($dateAt)
     {
         $this->dateAt = $dateAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSolde()
+    {
+        return $this->solde;
+    }
+
+    /**
+     * @param mixed $solde
+     */
+    public function setSolde($solde)
+    {
+        $this->solde = $solde;
     }
 
     /**
@@ -233,14 +254,16 @@ class Product
 
     public function newProd()
     {
-//        var_dump(new \DateTime());
-//        var_dump($this->getDateAt()->add(new \DateInterval('P30D')));
-//        die();
         if (new \DateTime() <= $this->getDateAt()->add(new \DateInterval('P30D'))){
             return true;
         } else {
             return false;
         }
+    }
+
+    public function getNewPrice()
+    {
+        return round(($this->getPrice() * (1-($this->getSolde() / 100 ))), 2);
     }
 
 

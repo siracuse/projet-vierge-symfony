@@ -5,6 +5,7 @@ namespace ProductBundle\Controller;
 use ProductBundle\Entity\ImageProduct;
 use ProductBundle\Entity\Product;
 use ProductBundle\Form\ProductType;
+use ProductBundle\Form\SoldeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -123,5 +124,25 @@ class ProductController extends Controller
             $this->addFlash('warning', 'Cette image n\'existe pas !');
         }
         return $this->redirectToRoute('admin-product-edit', ['id' => $productId]);
+    }
+
+    /**
+     * @Route ("/solde/{id}", name="admin-product-solde")
+     */
+    public function soldeAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository('ProductBundle:Product')->find($id);
+        $form = $this->createForm(SoldeType::class, $product);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+            $em->flush();
+            $this->addFlash('success', 'Votre produit a bien été modifiée');
+            return $this->redirectToRoute('admin-product-index');
+        }
+        return $this->render('back/product/solde.html.twig', [
+            'form' => $form->createView(),
+            'product' => $product
+        ]);
     }
 }
