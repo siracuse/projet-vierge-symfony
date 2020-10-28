@@ -49,7 +49,7 @@ class Product
     private $dateAt;
 
     /**
-     * @ORM\Column(name="solde", type="integer")
+     * @ORM\Column(name="solde", type="integer", nullable=true)
      */
     private $solde;
 

@@ -10,4 +10,16 @@ namespace ProductBundle\Repository;
  */
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getActuAjax($data)
+    {
+        $qb = $this
+            ->createQueryBuilder('a')
+            ->where('a.name LIKE :data')
+            ->setParameter('data', '%'.$data.'%')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
 }

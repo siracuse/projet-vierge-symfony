@@ -4,17 +4,33 @@
 {% block description %}H1 Socle luuug{% endblock %}
 
 {% block content %}
-    <section class="produit">
+    <section class="produit" style="padding: 5em 0">
         <div class="container">
             <p style="margin-bottom: 4em ">Tous les produits</p>
+
+            <div id="mySearch" class="overlaySearch" style="margin: 2em 0">
+                <div class="overlaySearch-content">
+                    <form class="mb-4">
+                        <input class="input-text-search-desktop" type="text"
+                               placeholder="Rechercher" id="ajaxDesktop" autocomplete="off">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeSearch()">X</a>
+                    </form>
+                    <div>
+                        <ul id="suggestion-box-desktop" class="px-0">
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
             <ul style="display: flex">
                 <li class="filter" data-filter="all"><span>Tout</span></li>
                 {% for category in categories %}
-                    <li class="filter" data-filter=".{{ category.name }}"><span>{{ category.name|capitalize }}</span>
+                    <li class="filter" data-filter=".{{ category.name }}">
+                        <span>{{ category.name|capitalize }}</span>
                     </li>
                 {% endfor %}
             </ul>
+
 
             <div class="row" id="filterContainer">
                 {% for product in products %}
@@ -27,7 +43,8 @@
 
                                 <h2 style="margin: 1em 0"><b>{{ product.price }} €</b></h2>
                             {% else %}
-                                <h2 style="margin: 1em 0;text-decoration: line-through"><b>{{ product.price }} €</b>
+                                <h2 style="margin: 1em 0;text-decoration: line-through">
+                                    <b>{{ product.price }} €</b>
                                 </h2>
                                 <h2 style="margin: 1em 0"><b>{{ product.newPrice }} €</b></h2>
                             {% endif %}
@@ -45,4 +62,33 @@
             </div>
         </div>
     </section>
+{% endblock %}
+
+
+{% block js %}
+    {# BARRE DE RECHERCHE DESKTOP #}
+    <script>
+        $(document).ready(function () {
+            $("#ajaxDesktop").keyup(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('ajax-search-prog') }}",
+                    data: {
+                        data: $(this).val(),
+                    },
+                    success: function (data) {
+                        $("#suggestion-box-desktop").empty();
+                        // console.log(data)
+                        for (var i = 0; i < data.length; i++) {
+                            let url = '{{ path('product-fiche', { slug: 'prod-slug', id: 'bob'}) }}'
+                            url = url.replace('bob', data[i][0]);
+                            url = url.replace('prod-slug', data[i][2]);
+                            $("#suggestion-box-desktop").append('<a href="'+url+'"> '+data[i][1]+'</a><br>');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
 {% endblock %}

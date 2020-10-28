@@ -153,7 +153,7 @@ footer{background-color: #444;padding:0.4em; color:#fff; text-align: center;}
 #paddingTop { padding-top: 155px}
 .btn-connexion { color: white} .btn-connexion:hover { color: #5eb5e0}
 .warning-message ul li {color:red}
-a {color:white}
+a {color:red}
 
 /*FILTER*/
 .produit .mix{display: none;}

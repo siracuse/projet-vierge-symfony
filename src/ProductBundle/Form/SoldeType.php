@@ -20,7 +20,7 @@ class SoldeType extends AbstractType
         $builder
 
             ->add('solde', IntegerType::class, [
-                'label'=> 'Réduction en pourcentage: ',
+                'label'=> 'Réduction en pourcentage : ',
                 'constraints' => [
                     new Range([
                         'min' => 0,
